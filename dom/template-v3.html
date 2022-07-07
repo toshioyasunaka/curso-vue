@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <h1>{{message}}</h1>
+    <p>{{saudacao()}}</p>
+</div>
+
+<h1 id="app-2">{{message}}</h1>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello'
+        },
+        methods: {
+            saudacao: function() {
+                return this.message + ', Toshio'
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app-2',
+        data: {
+            message: 'Bem vindo!'
+        }
+    })
+</script>
