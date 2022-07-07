@@ -3,7 +3,7 @@ new Vue ({
     data: {
         nome: 'Toshio',
         idade: 25,
-        imagem: 'https://images5.alphacoders.com/104/thumb-1920-1046568.jpg',
+        imagem: 'http://files.cod3r.com.br/curso-vue/vue.jpg',
     },
     methods: {
         multiplicaIdade3() {

@@ -5,21 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testando VueJS</title>
+    <style>
+        #divXY {
+            height: 300px;
+            width: 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: aquamarine;
+        }
+    </style>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <div id="app">
-        <p>{{message}}</p>
+        <h1>{{contador}}</h1>
+        <button v-on:click="adicionar()">Clique aqui!</button>
+        <div id="divXY" v-on:mousemove="atualizarXY($event)">Valores de X: {{x}} e Y: {{y}}</div>
     </div>
 
     <script>
         new Vue ({
             el: '#app',
             data: {
-                message: 'Hello World!'
+                contador: 0,
+                x: 0,
+                y: 0,
+            },
+            methods: {
+                adicionar: function() {
+                    return this.contador++;
+                },
+                atualizarXY: function(event) { 
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                }
             }
         })
+        
     </script>
 </body>
 </html>

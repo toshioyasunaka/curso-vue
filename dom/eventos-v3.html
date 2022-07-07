@@ -1,0 +1,42 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<style>
+    #area-div {
+       background-color: aliceblue;
+       height: 300px;
+       width: 400px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       text-align: center;
+    }
+</style>
+
+<div id="app">
+    <h1>{{contador}}</h1>
+    <button v-on:click="somar(5)">Adicionar</button>
+
+    <div v-on:mousemove="atualizarXY()" id="area-div">Mouse: {{x}} e {{y}}</div>
+    <p>Passe o mouse dentro da div acima para mudar os valores.</p>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            contador: 0,
+            x: 0,
+            y: 0,
+        },
+        methods: {
+            somar: function(passo) {
+                return this.contador += passo;
+            },
+            // o parâmetro event é padrão de um evento
+            atualizarXY: function(event) { 
+                this.x = event.clientX
+                this.y = event.clientY
+            }
+        }
+    })
+</script>

@@ -8,16 +8,18 @@
         <p>Meu nome é {{nome}}, tenho {{idade}} anos.</p>
         
         <!-- 2) Exiba sua idade multiplicada por 3 -->
-        <p>A idade multiplicada por 3 é: {{multiplicaIdade3()}}</p>
+        <p>A idade multiplicada por 3 é: {{multiplicaIdade3()}} - usando método</p>
+        <p>A idade multiplicada por 3 é: {{ idade * 3}} - s/ método</p>
         
         <!-- 3) Chame uma função para exibir um número randomico
             entre 0 and 1 (Math.random()) -->
-        <p>{{numeroRandomico()}}</p>
+        <p>{{ numeroRandomico() }} - c/ método</p>
+        <p>{{ Math.random().toFixed(2) }} - s/ método</p>
         
         <!-- 4) Procure uma imagem no google e exiba na tag img 
             fazendo o binding no atributo "src" -->
         <div>
-            <img height="400" v-bind:src="imagem">
+            <img height="200" v-bind:src="imagem">
         </div>
         
         <!-- 5) Inicialize o input com o seu nome (use o atributo "value") -->

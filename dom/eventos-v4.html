@@ -1,0 +1,68 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<style>
+    #area-div {
+       background-color: aliceblue;
+       height: 300px;
+       width: 400px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       text-align: center;
+    }
+
+    #aqui-nao {
+       height: 100px;
+       width: 150px;
+       background-color: darksalmon;
+       justify-content: right;
+       margin: 10px auto;
+    }
+
+    #aqui-nao2 {
+       height: 100px;
+       width: 150px;
+       background-color: darksalmon;
+       justify-content: left;
+       margin: 10px auto;
+    }
+</style>
+
+<div id="app">
+    <h1>{{contador}}</h1>
+    <button v-on:click="somar(5)">Adicionar</button>
+
+    <div v-on:mousemove="atualizarXY($event)" id="area-div">Mouse: {{x}} e {{y}}
+        <div id="aqui-nao" v-on:mousemove.stop>
+            Aqui não conta, por causa do <br> v-on:mousemove.stop
+        </div>
+        <div id="aqui-nao2" v-on:mousemove='naoNavegar()'>
+            Aqui não conta, por causa do <br> event.stopPropagation
+        </div>
+    </div>
+    <p>Passe o mouse dentro da div acima para mudar os valores.</p>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            contador: 0,
+            x: 0,
+            y: 0,
+        },
+        methods: {
+            somar: function(passo) {
+                return this.contador += passo;
+            },
+            // o parâmetro event é padrão de um evento
+            atualizarXY: function(event) { 
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            naoNavegar: function() {
+                event.stopPropagation();
+            }
+        }
+    })
+</script>
