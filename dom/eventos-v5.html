@@ -1,0 +1,58 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p>Sempre que algo for digitado, haverá um aviso</p>
+    <input type="text" v-on:keyup="enviarAlerta()">
+</div>
+
+<hr>
+
+<div id="app2">
+    <p>Sempre que o enter for pressionado dentro do input, haverá um aviso</p>
+    <input type="text" v-on:keyup.enter="enviarAlerta()">
+</div>
+
+<hr>
+
+<div id="app3">
+    <p>Sempre que o alt + enter for pressionado dentro do input, haverá um aviso</p>
+    <input type="text" v-on:keyup.alt.enter="enviarAlerta()">
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            enviarAlerta: function() {
+                alert('Você digitou algo!');
+            }
+        }
+    })
+
+    new Vue ({
+        el: '#app2',
+        data: {
+
+        },
+        methods: {
+            enviarAlerta: function() {
+                alert('Você clicou ENTER!');
+            }
+        }
+    })
+
+    new Vue ({
+        el: '#app3',
+        data: {
+
+        },
+        methods: {
+            enviarAlerta: function() {
+                alert('Você clicou alt + ENTER!');
+            }
+        }
+    })
+</script>

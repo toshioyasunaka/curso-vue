@@ -1,0 +1,31 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <h1>Two Way Data Binding</h1>
+
+    <h2>Modo "normal"</h2>
+    <p>{{ message }}</p>
+    <input type="text" v-bind:value='message' v-on:input="message = $event.target.value">
+</div>
+
+<div id="app2">
+    <h2>Modo simplificado (utilizando v-model)</h2>
+    <p>{{ message }}</p>
+    <input type="text" v-model="message">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Usando VueJS!'
+        }
+    })
+    
+    new Vue({
+        el: '#app2',
+        data: {
+            message: 'Usando VueJS!'
+        }
+    }) 
+</script>

@@ -1,0 +1,35 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="desafio">
+    <!-- 1) Exiba um alert quando o botão for clicado -->
+    <div>
+        <p>Se vc clicar no botão, receberá um alerta</p>
+        <button v-on:click="exibirAlerta()">Exibir Alerta</button>
+    </div>
+    
+    <hr>
+    <!-- 2) Escute o evento "keyup" e armazene o valor na propriedade
+        data (dica: event.target.value) -->
+    <div>
+        <p>Quando o input receber algum valor, ele será transferido p/ o parágrafo</p>
+        <input type="text" v-on:keyup="valor = $event.target.value"> - Criado com js direto na tag HTML
+        <p>{{ valor }}</p>
+    </div>
+
+    <p>ou</p>
+
+    <div>
+        <input type="text" v-on:keyup="armazenaValor($event)"> - Criado com método
+        <p>{{ valor2 }}</p>
+    </div>
+    
+    <hr>
+    <!-- 3) Ajuste o exemplo 2 para disparar o evento "keydown" somente
+        quando a tecla for ENTER -->
+    <div>
+        <p>O parágrafo só receberá o valor do input quando pressionado ENTER</p>
+        <input type="text" v-on:keydown.enter="valor3 = $event.target.value">
+        <p>{{ valor3 }}</p>
+    </div>
+</div>
+<script src="app.js"></script> 

@@ -1,0 +1,71 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p>Nesse exemplo SEM o <em><mark>computed</mark></em> sempre que atualizarmos o contador 2 será chamado o método pegarResultado().</p>
+    <p>O que ñ é bom acontecer, já que ele faz um processamento que é desnecessário. </p>
+    <p>Ver console</p>
+    <h1>{{ contador }} | {{ contador2 }}</h1>
+    <h3>{{ pegarResultado() }}</h3>
+    <button v-on:click="aumentar()">Aumentar Contador 1</button>
+    <button v-on:click="contador2++">Aumentar Contador 2</button>
+    <button v-on:click="diminuir()">Diminuir Contador 1</button>
+</div>
+
+<hr>
+
+<div id="app2">
+    <p>Aqui no 2º exemplo, COM o <em><mark>computed</mark></em>, o método pegarResultado() ñ é chamado de maneira desnecessário.</p>
+    <p>Isso porque o Vue entende que dentro desse método computado, o valor que foi alterado [contador2] ñ gera nenhum impacto na unidade computada [a unidade computada é o contador 1]</p>
+    <p>Nesse caso pegarResultado ñ leva parênteses.</p>
+    <p>Ver console</p>
+    <h1>{{ contador }} | {{ contador2 }}</h1>
+    <h3>{{ pegarResultado }}</h3>
+    <button v-on:click="aumentar()">Aumentar Contador 1</button>
+    <button v-on:click="contador2++">Aumentar Contador 2</button>
+    <button v-on:click="diminuir()">Diminuir Contador 1</button>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            contador: 0,
+            contador2: 0,
+        },
+        methods: {
+            aumentar() {
+                this.contador++;
+            },
+            diminuir() {
+                this.contador--;
+            },
+            pegarResultado() {
+                console.log('método resultado chamado');
+                return this.contador >= 5 ? 'O contador é IGUAL ou MAIOR que 5' : 'O contador é MENOR que 5'
+            }
+        }
+    })
+
+    new Vue ({
+        el: '#app2',
+        data: {
+            contador: 0,
+            contador2: 0,
+        },
+        computed: {
+            pegarResultado() {
+                console.log('método computed resultado chamado');
+                return this.contador >= 5 ? 'O contador é IGUAL ou MAIOR que 5' : 'O contador é MENOR que 5'
+            }
+        },
+        methods: {
+            aumentar() {
+                this.contador++;
+            },
+            diminuir() {
+                this.contador--;
+            },
+
+        }
+    })
+</script>

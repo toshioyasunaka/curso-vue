@@ -1,0 +1,22 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p>É possível utilizar de ferramentas js no próprio double mustache. Como multiplicar o contador, colocar um operador booleano: </p>
+    <h1>{{contador * 2}}</h1>
+    <h4>{{contador > 5 ? 'O contador é MAIOR que 10' :  'O contador é MENOR ou IGUAL a  10'}}</h4>
+    <button v-on:click="aumentarContagem()">Somar</button>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            contador: 0,
+        },
+        methods: {
+            aumentarContagem: function() {
+                this.contador++;
+            }
+        }
+    })
+</script>
