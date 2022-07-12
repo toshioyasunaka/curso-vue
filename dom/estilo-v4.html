@@ -1,0 +1,86 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<style>
+    .caixas {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    .c1 {
+        background-color: red;
+    }
+
+    .c2 {
+        background-color: green;
+    }
+
+    .c3 {
+        background-color: blue;
+    }
+
+    .girar {
+        transform: rotate(45deg);
+    }
+
+    .input-label {
+        display: block;
+        margin: 10px;
+    }
+
+    input {
+        padding: 5px;
+        text-align: center;
+        width: 70px;
+    }
+</style>
+
+<div id="app">
+    <div class="caixas">
+        <div class="demo" :style="{'background-color': cor}"></div>
+        <div class="demo" :style="meuEstilo1"></div>
+        <div class="demo" :style="{'backgroundColor': cor}"></div>
+    </div>
+    <hr>
+    <h4>Mexa com as cores das figuras</h4>
+    <label class="input-label">
+        Cor
+        <input type="text" v-model="cor">
+    </label>
+
+    <h4>Mexar com a largura e altura do elemento central</h4>
+    <label class="input-label">
+        Largura
+        <input type="number" v-model="largura">px
+    </label>
+
+    <label class="input-label">
+        Altura
+        <input type="number" v-model="altura">px
+    </label>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            cor: 'red',
+            largura: 100,
+            altura: 100
+        }, 
+        computed: {
+            meuEstilo1() {
+                return {
+                    backgroundColor: this.cor,
+                    width: this.largura + 'px',
+                    height: this.altura + 'px',
+                } 
+            }
+        }
+    })
+</script>
