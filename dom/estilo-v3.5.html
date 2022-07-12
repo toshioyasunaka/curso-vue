@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando VueJS</title>
+</head>
+
+<script src="https://unpkg.com/vue@2"></script>
+
+<style>
+    #caixas {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .demo {
+        background-color: gray;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .c1 {
+        background-color: red;
+    }
+
+    .c2 {
+        background-color: blue;
+        color: white;
+    }
+
+    .c3 {
+        background-color: green;
+    }
+
+    .girar {
+        transform: rotate(45deg);
+    }
+
+    #inputs {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #inputs div{
+        height: 100px;
+        width: 75px;
+    }
+
+    input {
+        height: 30px;
+        width: 30px;
+        text-align: center;
+    }
+</style>
+
+<div id="app">
+    <div id="caixas">
+        <div class="demo" :class="selecionarCor" @click="alterarCor = !alterarCor">Clique para mudar de cor</div>
+        <div class="demo" :class="selecionarPosicao" @click="alterarPosicao = !alterarPosicao"><p>Clique para girar</p></div>
+        <div class="demo" :class="classeCSS">Digite c1, c2 ou c3 no input abaixo</div>
+    </div>
+    <div id="inputs">
+        <div></div>
+        <div></div>
+        <input type="text" v-model="classeCSS">
+    </div>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            alterarCor: false,
+            alterarPosicao: false,
+            classeCSS: 'c1'
+        },
+        computed: {
+            selecionarCor() {
+                return {
+                    c1: !this.alterarCor,
+                    c2: this.alterarCor
+                }
+            },
+            selecionarPosicao() {
+               return {
+                girar: this.alterarPosicao 
+               }
+            }
+        }
+    })
+</script>
+
+</html>
