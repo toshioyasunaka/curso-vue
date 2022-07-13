@@ -23,10 +23,18 @@
 	background-color: red;
 }
 
-.fonte {
-	color: white;
+#barra-progresso {
+	height: 30px;
+	width: 300px;
+	border: 1px solid black;
+}
+
+#progresso {
+	background-color: red;
+	height: 100%;
 	text-align: center;
+	font-weight: bold;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
