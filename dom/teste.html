@@ -1,0 +1,115 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<style>
+    div {
+        margin: 10px 0;
+    }
+    #app2-div{
+        width: 100px;
+        height: 100px;
+    }
+
+    .cor1 {
+        background-color: blue;
+        color: white;
+    }
+
+    .cor2 {
+        background-color: green;
+    }
+
+    #barra-progresso {
+        width: 300px;
+        height: 30px;
+        border: 1px solid black;
+    }
+
+    .progresso {
+        margin: 0;
+        background-color: red;
+        height: 100%;
+        text-align: center;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .concluido {
+        background-color: green;
+        color: white;
+    }
+</style>
+
+<div id= "app">
+    <button @click="aumentarContagem()">Clique aqui!</button>
+    <p>Você clicou no botão {{ cliques }} vezes.</p>
+</div>
+
+<hr>
+
+<div id="app2">
+    <button @click="mudarCor">Trocar cor</button>
+    <div id="app2-div" :class="backgroundColor"></div>
+</div>
+
+<hr>
+
+<div id="app3">
+    <button @click="iniciarProgresso">Iniciar Carregamento</button>
+    <div id="barra-progresso">
+        <div class="progresso" :class="{concluido: status}" :style="{width: widthProgresso}">
+            <p id="msg">{{ texto }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cliques: 0,
+        },
+        methods: {
+            aumentarContagem() {
+                this.cliques++;
+            },
+        }
+    })
+
+    new Vue ({
+        el: '#app2',
+        data: {
+            backgroundColor: 'cor2',
+        },
+        methods: {
+            mudarCor() {
+                this.backgroundColor === 'cor1' ? this.backgroundColor = 'cor2' : this.backgroundColor = 'cor1';
+            },
+        }
+    })
+
+    new Vue ({
+        el: '#app3',
+        data: {
+            widthProgresso: 0,
+            texto: '',
+            status: false,
+        },
+        methods: {
+            iniciarProgresso() {
+                let width = 0;
+                let temporizador = setInterval(() => {
+                    width += 20;
+                    this.texto = 'Carregando...'
+                    this.widthProgresso = `${width}%`
+                    if (width === 100) {
+                        this.texto = 'Concluido!';
+                        this.status = true;
+                        clearInterval(temporizador);
+                    }
+                }, 500)
+            }
+        }
+    })
+</script>
