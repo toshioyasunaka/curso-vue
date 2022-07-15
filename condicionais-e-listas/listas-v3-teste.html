@@ -1,0 +1,32 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <h4>Animais de estimação mais comuns</h4>
+    <ul v-for="animal in animais">
+        <li>{{ animal }}</li>
+    </ul>
+    <hr>
+    <ul v-for="pessoa in pessoas">
+        <li>{{pessoa.nome}} gosta de {{ pessoa.hobbie }} e sua cor preferida é {{ pessoa.cor }}</li>
+        <ul>
+            <li v-for="(valor, atributo, index) in pessoa">
+                Fato {{ index + 1}}: seu(sua) {{atributo}} é {{ valor }}.
+            </li>
+        </ul>
+    </ul>
+    <hr>
+
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            animais: ['cachorro', 'gato', 'coelho', 'pássaro'],
+            pessoas: [
+                {nome: 'João', hobbie: 'jogar futebol', cor: 'vermelho'},
+                {nome: 'Karen', hobbie: 'pintar', cor: 'azul'}
+            ]
+        }
+    })
+</script>
