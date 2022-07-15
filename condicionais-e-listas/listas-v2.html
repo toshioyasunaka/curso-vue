@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<style>
+    ul {
+        list-style: none;
+    }
+</style>
+
+<div id="app">
+    <ul>
+        <!-- o indice sempre deve ser o segundo elemento representado no v-for(elemento, aqui o indice) -->
+        <li v-for="(cor, indice) in cores">{{ indice + 1}}) {{ cor }}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue ({
+        el:'#app',
+        data: {
+            cores: ['vermelho', 'azul', 'preto', 'branco'],
+            pessoas: [
+                {nome: 'Toshio', idade: 25, peso: 65},
+                {nome:'João', idade: 28, peso: 70},
+            ]
+        }
+    })
+</script>

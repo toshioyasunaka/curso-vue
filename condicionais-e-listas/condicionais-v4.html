@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <!-- A tag template não aparece no corpo de código da página quando renderizado com o v-if, é exibido apenas os elementos filhos, diferentemente da div -->
+    <template v-if="logado">
+        <p>Usuário logado: {{ nome }}</p>
+        <p>Perfil: admin</p>
+    </template>
+    <p v-else-if="anonimo">Navegando como anônimo</p>
+    <p v-else>Nenhum usuário logado</p>
+    <button @click="logado = !logado">{{ logado ? 'Sair' : 'Entrar' }}</button>
+    <input type="checkbox" v-model="anonimo">Entrar como Anônimo
+    <hr>
+    <!-- O v-show funciona como o v-if. É indicado utilizar quando há um código mt grande para ser exibido ou nao, e tbm qnd é possível deixar o que ñ foi renderizado em linhas de cdg [questões de segurança]. -->
+    <footer v-show="logado">
+        Feito para você!
+    </footer>
+    <footer v-show="!logado">
+        Faça login e tenha benefícios! 
+    </footer>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            nome: 'Toshio',
+            logado: false,
+            anonimo: false,
+        }
+    })
+</script>
