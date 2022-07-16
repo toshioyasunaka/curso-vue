@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>O Matador de Monstros</h1>
+    </header>
+    <main id="app">
+        <section id="game-screen">
+            <div class="player-screen">
+                <p class="name">Jogador</p>
+                <div class="life-border">
+                    <div class="life-bar"></div>
+                </div>
+                <p class="life-percentage"></p>
+            </div>
+
+            <div class="player-screen">
+                <p class="name">Monstro</p>
+                <div class="life-border">
+                    <div class="life-bar"></div>
+                </div>
+                <p class="life-percentage"></p>
+            </div>
+        </section>
+
+        <section id="actions">
+            <button id="start-button" v-show="!gameStart" @click="gameStart = !gameStart">Iniciar Novo Jogo</button>
+            <button id="attack-button" v-show="gameStart">Ataque</button>
+            <button id="special-attack-button" v-show="gameStart">Ataque Especial</button>
+            <button id="heal-button" v-show="gameStart">Curar</button>
+            <button id="give-up-button" v-show="gameStart">Desistir</button>
+        </section>
+
+        <section id="historics">
+            <div id="monster-historic" class="historic">Monstro atingiu com X</div>
+            <div id="player-historic" class="historic">Jogador atingiu com X</div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/vue@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
