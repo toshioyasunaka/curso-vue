@@ -25,17 +25,20 @@ section {
 
 #game-screen {
     display: flex;
-    justify-content: space-around;
-    font-variant: small-caps;
     padding: 20px;
     border: 1px solid lightgray;
 }
 
-.player-scren {
+.player-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex: 1;
 }
 
 .name {
+    font-variant: small-caps;
     font-size: 1.6em;
     margin-bottom: 10px;
 }
@@ -121,13 +124,17 @@ button:hover {
 #historic {
     text-transform: uppercase;
     padding: 10px 20px;
-    color: white;
 }
 
 .historic {
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
     padding: 5px;
     border-radius: 5px;
+    list-style: none;
+    color: white;
+    text-transform: uppercase;
 }
 
 .monster-historic {

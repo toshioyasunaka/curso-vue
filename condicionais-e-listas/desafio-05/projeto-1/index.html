@@ -24,7 +24,7 @@
             <div class="player-screen">
                 <h1 class="name">Monstro</h1>
                 <div class="life-border">
-                    <div class="life-bar" :style="{width: monsterLife + '%'}" :class="{danger: playerLife < 20}"></div>
+                    <div class="life-bar" :style="{width: monsterLife + '%'}" :class="{danger: monsterLife < 20}"></div>
                 </div>
                 <p class="life-percentage">{{ monsterLife }}%</p>
             </div>
@@ -35,16 +35,18 @@
         </section>
 
         <section id="actions">
-            <button id="start-button" v-show="gameHome" @click="gameStart">Iniciar Novo Jogo</button>
-            <button id="attack-button" v-show="!gameHome" @click="attack">Ataque</button>
-            <button id="special-attack-button" v-show="!gameHome" @click="specialAttack">Ataque Especial</button>
-            <button id="heal-button" v-show="!gameHome" @click="heal">Curar</button>
-            <button id="give-up-button" v-show="!gameHome" @click="giveUp">Desistir</button>
+            <button id="start-button" v-if="gameHome" @click="gameStart">Iniciar Novo Jogo</button>
+            <template v-else>
+                <button id="attack-button" @click="attack">Ataque</button>
+                <button id="special-attack-button" @click="specialAttack">Ataque Especial</button>
+                <button id="heal-button" @click="heal">Curar</button>
+                <button id="give-up-button" @click="giveUp">Desistir</button>
+            </template>
         </section>
 
-        <section id="historic" v-show="gameStarted">
-            <ul v-for="item in battleHistoric">
-                <li class="historic" :class="historicStyle"></li>
+        <section id="historic" v-if="battleHistoric.length">
+            <ul>
+                <li class="historic" v-for="event in battleHistoric" :class="event.styleClass">{{ event.text }}</li>
             </ul>
         </section>
     </main>
