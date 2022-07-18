@@ -16,31 +16,37 @@
             <div class="player-screen">
                 <p class="name">Jogador</p>
                 <div class="life-border">
-                    <div class="life-bar"></div>
+                    <div class="life-bar" :style="{width: playerLifeBar + '%'}"></div>
                 </div>
-                <p class="life-percentage"></p>
+                <p class="life-percentage">{{ playerLifeBar }}%</p>
             </div>
 
             <div class="player-screen">
                 <p class="name">Monstro</p>
                 <div class="life-border">
-                    <div class="life-bar"></div>
+                    <div class="life-bar" :style="{width: monsterLifeBar + '%'}"></div>
                 </div>
-                <p class="life-percentage"></p>
+                <p class="life-percentage">{{ monsterLifeBar }}%</p>
             </div>
+        </section>
+
+        <section id="resultMessage" v-show="gameEnd">
+            <p :class="result">{{ resultText }}</p>
         </section>
 
         <section id="actions">
             <button id="start-button" v-show="!gameStart" @click="gameStart = !gameStart">Iniciar Novo Jogo</button>
-            <button id="attack-button" v-show="gameStart">Ataque</button>
+            <button id="attack-button" v-show="gameStart" @click="attack">Ataque</button>
             <button id="special-attack-button" v-show="gameStart">Ataque Especial</button>
             <button id="heal-button" v-show="gameStart">Curar</button>
             <button id="give-up-button" v-show="gameStart">Desistir</button>
         </section>
 
         <section id="historics">
-            <div id="monster-historic" class="historic">Monstro atingiu com X</div>
-            <div id="player-historic" class="historic">Jogador atingiu com X</div>
+            <ul>
+                <li id="monster-historic" class="historic">Monstro atingiu com X</li>
+                <li id="player-historic" class="historic">Jogador atingiu com X</li>
+            </ul>
         </section>
     </main>
 

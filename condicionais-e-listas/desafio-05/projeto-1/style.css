@@ -31,18 +31,39 @@ section {
     border: 1px solid lightgray;
 }
 
-.player-screen {
-
-}
-
 .name {
     font-size: 1.6em;
+    margin-bottom: 10px;
 }
 
 .life-border {
     border: 1px solid gray;
     width: 400px;
     height: 20px;
+}
+
+.life-bar {
+    background-color: green;
+    height: 100%;
+    max-width: 100%;
+}
+
+.life-percentage {
+    font-weight: bold;
+}
+
+#resultMessage {
+    padding: 20px;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.lost {
+    color: red;
+}
+
+.won {
+    color: green;
 }
 
 #actions {
