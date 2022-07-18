@@ -66,6 +66,10 @@ section {
     color: green;
 }
 
+.draw {
+    color: gray;
+}
+
 #actions {
     padding: 20px
 }
