@@ -4,18 +4,20 @@ new Vue ({
         gameHome: true,
         gameStarted: false,
         gameEnd: false,
-        playerLifeBar: 100,
-        monsterLifeBar: 100,
+        playerLife: 100,
+        monsterLife: 100,
         resultText: '',
         result: '',
+        battleHistoric: [],
+        historicStyle: '',
     },
     methods: {
         gameStart() {
             this.gameHome = false;
             this.gameEnd = false;
             this.gameStarted = true;
-            this.playerLifeBar = 100;
-            this.monsterLifeBar = 100;
+            this.playerLife = 100;
+            this.monsterLife = 100;
         },
 
         attack() {
@@ -24,8 +26,8 @@ new Vue ({
             const playerDamage = Math.random() * (12 - 1);
             const playerIntegerDamage = playerDamage.toFixed();
 
-            this.playerLifeBar -= monsterIntegerDamage;
-            this.monsterLifeBar -= playerIntegerDamage;
+            this.playerLife -= monsterIntegerDamage;
+            this.monsterLife -= playerIntegerDamage;
 
             this.attackReactions();
         },
@@ -36,8 +38,8 @@ new Vue ({
             const playerDamage = Math.random() * (15 - 1);
             const playerIntegerDamage = playerDamage.toFixed();
 
-            this.playerLifeBar -= monsterIntegerDamage;
-            this.monsterLifeBar -= playerIntegerDamage;
+            this.playerLife -= monsterIntegerDamage;
+            this.monsterLife -= playerIntegerDamage;
 
             this.attackReactions();
         },
@@ -48,11 +50,11 @@ new Vue ({
             const playerHeal = Math.random() * (15 - 1);
             const playerIntegerHeal = playerHeal.toFixed();
 
-            this.playerLifeBar -= Number(monsterIntegerDamage);
-            this.playerLifeBar += Number(playerIntegerHeal);
+            this.playerLife -= Number(monsterIntegerDamage);
+            this.playerLife += Number(playerIntegerHeal);
 
-            if (this.playerLifeBar > 100) {
-                this.playerLifeBar = 100;
+            if (this.playerLife > 100) {
+                this.playerLife = 100;
                 alert("Sua vida está no máximo")
             }
 
@@ -66,23 +68,23 @@ new Vue ({
         },
 
         attackReactions() {
-            if (this.playerLifeBar <= 0 && this.monsterLifeBar > 0) {
-                this.playerLifeBar = 0;
+            if (this.playerLife <= 0 && this.monsterLife > 0) {
+                this.playerLife = 0;
                 this.resultText = 'Você perdeu!!';
                 this.result = 'lost';
                 this.reset();
             }
 
-            else if (this.monsterLifeBar <= 0 && this.playerLifeBar > 0) {
-                this.monsterLifeBar = 0;
+            else if (this.monsterLife <= 0 && this.playerLife > 0) {
+                this.monsterLife = 0;
                 this.resultText = 'Você ganhou!!';
                 this.result = 'won';
                 this.reset();
             }
 
-            if (this.monsterLifeBar <= 0 && this.playerLifeBar <= 0) {
-                this.monsterLifeBar = 0;
-                this.playerLifeBar = 0;
+            if (this.monsterLife <= 0 && this.playerLife <= 0) {
+                this.monsterLife = 0;
+                this.playerLife = 0;
                 this.resultText = 'Empatou!';
                 this.result = 'draw';
                 this.reset();

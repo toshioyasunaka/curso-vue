@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Matador de Monstros</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,19 +14,19 @@
     <main id="app">
         <section id="game-screen">
             <div class="player-screen">
-                <p class="name">Jogador</p>
+                <h1 class="name">Jogador</h1>
                 <div class="life-border">
-                    <div class="life-bar" :style="{width: playerLifeBar + '%'}"></div>
+                    <div class="life-bar" :style="{width: playerLife + '%'}" :class="{danger: playerLife < 20}"></div>
                 </div>
-                <p class="life-percentage">{{ playerLifeBar }}%</p>
+                <p class="life-percentage">{{ playerLife }}%</p>
             </div>
 
             <div class="player-screen">
-                <p class="name">Monstro</p>
+                <h1 class="name">Monstro</h1>
                 <div class="life-border">
-                    <div class="life-bar" :style="{width: monsterLifeBar + '%'}"></div>
+                    <div class="life-bar" :style="{width: monsterLife + '%'}" :class="{danger: playerLife < 20}"></div>
                 </div>
-                <p class="life-percentage">{{ monsterLifeBar }}%</p>
+                <p class="life-percentage">{{ monsterLife }}%</p>
             </div>
         </section>
 
@@ -42,10 +42,9 @@
             <button id="give-up-button" v-show="!gameHome" @click="giveUp">Desistir</button>
         </section>
 
-        <section id="historics">
-            <ul>
-                <li id="monster-historic" class="historic">Monstro atingiu com X</li>
-                <li id="player-historic" class="historic">Jogador atingiu com X</li>
+        <section id="historic" v-show="gameStarted">
+            <ul v-for="item in battleHistoric">
+                <li class="historic" :class="historicStyle"></li>
             </ul>
         </section>
     </main>
