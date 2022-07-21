@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <h3 style="display:inline">{{ titulo }}</h3>
+    <button @click="alterar">Alterar</button>
+</div>
+
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data: {
+            titulo: 'Teste 1'
+        },
+        methods: {
+            alterar() {
+                this.titulo += '!'
+            }
+        }
+    }) 
+
+    vm.novaInfo = 'Nova info';
+    console.log(vm.novaInfo);
+</script>
