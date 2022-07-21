@@ -1,5 +1,5 @@
 <template>
-  <hello-world/>
+  <hello-world />
 </template>
 
 <script>
@@ -7,7 +7,6 @@
 
   export default {
     name: 'Home-errorCorrection',
-
     components: {
       HelloWorld,
     },
