@@ -1,0 +1,68 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app1">
+    <h1>Componente {{ idComponent }}</h1>
+    <contador1></contador1>
+    <hr>
+    <contador1></contador1>
+</div>
+
+<div id="app2">
+    <h1>Componente {{ idComponent }}</h1>
+    <app-contador></app-contador>
+    <hr>
+    <app-contador></app-contador>
+</div>
+
+<script>
+    //COMPONENTE COM REGISTRO GLOBAL
+    const contador = {
+        template: `
+        <div>
+            <span>{{ contador }}</span>
+            <button @click="contador++">Adicionar</button>
+            <button @click="contador--">Subtrair</button>
+            <span>É possível declarar diversas variáveis dentro de um mesmo componente: {{ resposta }}</span>
+        </div>
+        `,
+        data() {
+            return {
+                contador: 0,
+                resposta: 'sim'
+            }
+        }
+    }
+    
+    new Vue({
+        el: '#app1',
+                // REGISTRO LOCAL
+        data() {
+            return {
+                idComponent: 1
+            }
+        },
+        // Pegando o componente com registro global e inserindo na Vue instance 1
+        // Deve ser referenciado como tag HTML no template destinado
+        components: {
+            contador1: contador,
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        // REGISTRO LOCAL
+        data() {
+            return {
+                idComponent: 2
+            }
+        },
+        // Pegando o componente com registro global e inserindo na Vue instance 1
+        // Deve ser referenciado como tag HTML no template destinado
+        components: {
+            'app-contador': contador
+            // para que seja valido um componente com nomenclatura composta, ele deve estar entre aspas simples.
+            // isso apenas na instância vue, na tag HTML deve ser sem aspas.
+        }   
+    })
+</script>

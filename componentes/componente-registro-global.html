@@ -1,7 +1,15 @@
 <meta charset="UTF-8">
 <script src="https://unpkg.com/vue@2"></script>
 
-<div id="app">
+<div id="app1">
+    <h1>Componente {{ idComponent }}</h1>
+    <contador></contador>
+    <hr>
+    <contador></contador>
+</div>
+
+<div id="app2">
+    <h1>Componente {{ idComponent }}</h1>
     <contador></contador>
     <hr>
     <contador></contador>
@@ -25,6 +33,20 @@
     })
     
     new Vue({
-        el: '#app'
+        el: '#app1',
+        data() {
+            return {
+                idComponent: 1
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        data() {
+            return {
+                idComponent: 2
+            }
+        }
     })
 </script>
