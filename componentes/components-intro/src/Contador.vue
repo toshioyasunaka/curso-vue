@@ -24,22 +24,24 @@ export default {
 }
 </script>
 
-<style>
+<!-- Com o SCOPED o style fica limitado apenas aos itens desse componente -->
+<style scoped>
     .contador span {
         border: 1px solid black;
         height: 100px;
         padding: 20px;
+        margin-bottom: 10px;
     }
 
-    .contador button {
+    button {
         height: 50px;
         width: 50px;
         border-radius: 25px;
         color: white;
         background-color: salmon;
         margin-left: 10px;
-        margin-bottom: 10px;
         outline: none;
         cursor: pointer;
+        margin-bottom: 10px;
     }
 </style>
