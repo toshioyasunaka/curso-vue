@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-contadores />
-    <button>Botão fora do estilo escopado</button>
+    <button>Botão fora do escopo de estilo</button>
   </div>
 </template>
 
