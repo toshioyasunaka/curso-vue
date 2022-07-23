@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-  <app-contador />
+    <h1>Contadores</h1>
+    <app-contador />
+  </div>
 </template>
 
 <script>
-export default {
-  el: "#app",
-};
+export default {};
 </script>
