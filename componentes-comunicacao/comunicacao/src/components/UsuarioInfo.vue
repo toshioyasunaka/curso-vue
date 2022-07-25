@@ -17,7 +17,7 @@ export default {
             //default: function() {
             //    return Array(10).fill(0).join(',')
             //}
-            default: "Anônimo",
+            default: "Anônimo", //caso não seja passado a propriedade nome, ela será considerada como 'Anônimo' por padrão
         },
         reiniciarFn: Function
     },
