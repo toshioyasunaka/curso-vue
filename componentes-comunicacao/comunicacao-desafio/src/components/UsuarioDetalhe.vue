@@ -10,12 +10,19 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            usuario: null
+    import barramento from './barramento.js'
+
+    export default {
+        data() {
+            return {
+                usuario: null
+            }
+        },
+        created() {
+            barramento.onUsuarioSelecionado(usuario => {
+                this.usuario = usuario
+            })
         }
-    }
 }
 </script>
 
