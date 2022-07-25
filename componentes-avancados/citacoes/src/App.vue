@@ -1,6 +1,8 @@
 <template>
 	<div id="app">
-		<component :is="componente" />
+		<keep-alive>
+			<component :is="componente" />	
+		</keep-alive>
 		<span>
 			<button @click="componente == 'Citacoes' ? componente = 'Sobre' : componente = 'Citacoes'">Ver {{ componente == 'Citacoes' ? 'Sobre' : 'Citações'}}</button>
 		</span>

@@ -10,7 +10,18 @@
 
 <script>
 export default {
-
+    criated() {
+        console.log('criated')
+    },
+    destroyed() {
+        console.log('destroyed')
+    },
+    activated() {
+        console.log('activated')
+    },
+    deactivated() {
+        console.log('deactivated')
+    },
 }
 </script>
 
