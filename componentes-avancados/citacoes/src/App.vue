@@ -1,7 +1,9 @@
 <template>
 	<div id="app">
-		<Citacoes />
-		<Sobre />
+		<component :is="componente" />
+		<span>
+			<button @click="componente == 'Citacoes' ? componente = 'Sobre' : componente = 'Citacoes'">Ver {{ componente == 'Citacoes' ? 'Sobre' : 'Citações'}}</button>
+		</span>
 	</div>
 </template>
 
@@ -10,7 +12,12 @@ import Citacoes from './components/Citacoes'
 import Sobre from './components/Sobre'
 
 export default {
-	components: { Citacoes, Sobre }
+	components: { Citacoes, Sobre },
+	data() {
+		return {
+			componente: 'Citacoes'
+		}
+	}
 }
 </script>
 
@@ -33,5 +40,6 @@ export default {
         font-weight: 300;
         color: #FFF;
         background-color: rgba(0, 0, 0, .5);
+		cursor: pointer;
     }
 </style>
